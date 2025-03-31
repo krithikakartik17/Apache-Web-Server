@@ -1,0 +1,35 @@
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+.terraformrc
+terraform-crash.log
+terraform-crash.*.log
+
+# Credentials
+*.pem # If you accidentally create keyfiles in your terraform directory.
+*.key # If you accidentally create keyfiles in your terraform directory.
+*.p12 # PKCS#12 certificates.
+*.pkcs12 # PKCS#12 certificates.
+*.jks # Java KeyStore.
+
+# Temporary files
+*~
+\#*#
+.*.swp
+.*.swo
+.DS_Store
+
+# IDE specific files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+#OS generated files
+Thumbs.db

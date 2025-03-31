@@ -1,0 +1,33 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start and enable Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Allow HTTP traffic through UFW
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Copy index.html
+      copy:
+        src: /home/username/index.html        #client path
+        dest: /var/www/html/index.html        #remote-server path
+        owner: username
+        group: username
+        mode: '0644'
